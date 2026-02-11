@@ -1,7 +1,8 @@
 import { BrowserRouter, Routes, Route, Link, useLocation } from 'react-router-dom';
 import { Home } from './pages/Home';
 import { Support } from './pages/Support';
-import { MessageCircle, HelpCircle, Home as HomeIcon } from 'lucide-react';
+import { Privacy } from './pages/Privacy';
+import { MessageCircle, HelpCircle, Home as HomeIcon, Shield } from 'lucide-react';
 
 function Navigation() {
   const location = useLocation();
@@ -21,8 +22,8 @@ function Navigation() {
             <Link
               to="/"
               className={`px-4 py-2 rounded-lg flex items-center space-x-2 transition-colors duration-200 ${location.pathname === '/'
-                  ? 'bg-slate-800 text-white'
-                  : 'text-slate-400 hover:text-white hover:bg-slate-800/50'
+                ? 'bg-slate-800 text-white'
+                : 'text-slate-400 hover:text-white hover:bg-slate-800/50'
                 }`}
             >
               <HomeIcon className="w-4 h-4" />
@@ -31,12 +32,22 @@ function Navigation() {
             <Link
               to="/support"
               className={`px-4 py-2 rounded-lg flex items-center space-x-2 transition-colors duration-200 ${location.pathname === '/support'
-                  ? 'bg-slate-800 text-white'
-                  : 'text-slate-400 hover:text-white hover:bg-slate-800/50'
+                ? 'bg-slate-800 text-white'
+                : 'text-slate-400 hover:text-white hover:bg-slate-800/50'
                 }`}
             >
               <HelpCircle className="w-4 h-4" />
               <span>支持</span>
+            </Link>
+            <Link
+              to="/privacy"
+              className={`px-4 py-2 rounded-lg flex items-center space-x-2 transition-colors duration-200 ${location.pathname === '/privacy'
+                ? 'bg-slate-800 text-white'
+                : 'text-slate-400 hover:text-white hover:bg-slate-800/50'
+                }`}
+            >
+              <Shield className="w-4 h-4" />
+              <span>隐私政策</span>
             </Link>
           </div>
         </div>
@@ -53,6 +64,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/support" element={<Support />} />
+          <Route path="/privacy" element={<Privacy />} />
         </Routes>
       </div>
     </BrowserRouter>
