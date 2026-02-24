@@ -1,4 +1,3 @@
-import { MessageCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from '../components/Button';
 
@@ -6,13 +5,15 @@ export function Home() {
     return (
         <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 flex items-center justify-center px-4">
             <div className="max-w-4xl text-center">
-                <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-r from-purple-600 to-blue-600 mb-8">
-                    <MessageCircle className="w-10 h-10 text-white" />
-                </div>
+                <img 
+                    src="/app-icon.png" 
+                    alt="灵犀" 
+                    className="inline-block w-20 h-20 rounded-3xl object-cover shadow-2xl mb-8" 
+                />
 
                 <h1 className="text-5xl sm:text-7xl font-bold mb-6">
                     <span className="bg-gradient-to-r from-purple-400 via-blue-400 to-cyan-400 text-transparent bg-clip-text">
-                        VoiceAgent
+                        灵犀
                     </span>
                 </h1>
 
@@ -31,9 +32,9 @@ export function Home() {
                             访问支持中心
                         </Button>
                     </Link>
-                    <Button variant="outline" size="lg">
+                    {/* <Button variant="outline" size="lg">
                         查看文档
-                    </Button>
+                    </Button> */}
                 </div>
 
                 <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 text-left">

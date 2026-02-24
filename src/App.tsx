@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route, Link, useLocation } from 'react-router-do
 import { Home } from './pages/Home';
 import { Support } from './pages/Support';
 import { Privacy } from './pages/Privacy';
-import { MessageCircle, HelpCircle, Home as HomeIcon, Shield } from 'lucide-react';
+import { HelpCircle, Shield } from 'lucide-react';
 
 function Navigation() {
   const location = useLocation();
@@ -12,10 +12,8 @@ function Navigation() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <Link to="/" className="flex items-center space-x-2 group">
-            <div className="w-10 h-10 rounded-lg bg-gradient-to-r from-purple-600 to-blue-600 flex items-center justify-center group-hover:scale-110 transition-transform duration-200">
-              <MessageCircle className="w-6 h-6 text-white" />
-            </div>
-            <span className="text-xl font-bold text-white">VoiceAgent</span>
+            <img src="/app-icon.png" alt="灵犀" className="w-10 h-10 rounded-lg object-cover shadow-lg group-hover:scale-110 transition-transform duration-200" />
+            <span className="text-xl font-bold text-white">灵犀</span>
           </Link>
 
           <div className="flex items-center space-x-1">
@@ -26,7 +24,7 @@ function Navigation() {
                 : 'text-slate-400 hover:text-white hover:bg-slate-800/50'
                 }`}
             >
-              <HomeIcon className="w-4 h-4" />
+              <img src="/app-icon.png" alt="首页" className="w-4 h-4 rounded-[4px] object-cover" />
               <span>首页</span>
             </Link>
             <Link

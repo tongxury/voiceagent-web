@@ -1,4 +1,5 @@
 import { useState, type FormEvent } from 'react';
+import { addFeedback } from '../api/support';
 import { Card } from '../components/Card';
 import { Button } from '../components/Button';
 import { Input } from '../components/Input';
@@ -13,9 +14,8 @@ import {
     Activity,
     ExternalLink,
     Phone,
-    MessageCircle,
-    FileText,
-    Upload
+    MessageSquare,
+    FileText
 } from 'lucide-react';
 
 export function Support() {
@@ -31,16 +31,26 @@ export function Support() {
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
         setIsSubmitting(true);
-        // Simulate API call
-        await new Promise(resolve => setTimeout(resolve, 2000));
-        alert('感谢您的消息!我们会尽快回复。');
-        setIsSubmitting(false);
-        setFormData({ name: '', email: '', subject: '', category: 'technical', message: '' });
+        try {
+            const content = `姓名: ${formData.name}\n邮箱: ${formData.email}\n主题: ${formData.subject}\n\n${formData.message}`;
+            await addFeedback({
+                category: formData.category,
+                content: content
+            });
+
+            alert('感谢您的消息!我们会尽快回复。');
+            setFormData({ name: '', email: '', subject: '', category: 'technical', message: '' });
+        } catch (error) {
+            console.error('提交反馈出错:', error);
+            alert('提交失败，请稍后重试。');
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     const faqs = [
         {
-            title: '如何开始使用 VoiceAgent?',
+            title: '如何开始使用 灵犀?',
             content: (
                 <p>
                     首先,您需要创建一个账户并获取 API 密钥。然后按照我们的{' '}
@@ -53,7 +63,7 @@ export function Support() {
             title: '支持哪些编程语言?',
             content: (
                 <p>
-                    VoiceAgent 提供多种语言的 SDK,包括 Python、JavaScript、Go、Java 和 Swift。
+                    灵犀 提供多种语言的 SDK,包括 Python、JavaScript、Go、Java 和 Swift。
                     您也可以直接使用 REST API 与任何支持 HTTP 的语言集成。
                 </p>
             )
@@ -87,7 +97,7 @@ export function Support() {
             title: '支持实时语音通话吗?',
             content: (
                 <p>
-                    是的!VoiceAgent 支持实时双向语音对话,延迟低于 300ms。
+                    是的!灵犀 支持实时双向语音对话,延迟低于 300ms。
                     我们使用 WebRTC 和优化的语音处理管道确保流畅的对话体验。
                 </p>
             )
@@ -188,7 +198,7 @@ export function Support() {
                         <p className="text-slate-400">平均响应时间(专业版)</p>
                     </Card>
                     <Card className="text-center">
-                        <MessageCircle className="w-8 h-8 text-blue-400 mx-auto mb-3" />
+                        <MessageSquare className="w-8 h-8 text-blue-400 mx-auto mb-3" />
                         <h3 className="text-2xl font-bold text-white mb-1">98%</h3>
                         <p className="text-slate-400">客户满意度</p>
                     </Card>
@@ -285,7 +295,7 @@ export function Support() {
                             />
                         </div>
 
-                        <div className="border-2 border-dashed border-slate-700 rounded-lg p-6 text-center hover:border-purple-500 transition-colors duration-200 cursor-pointer">
+                        {/* <div className="border-2 border-dashed border-slate-700 rounded-lg p-6 text-center hover:border-purple-500 transition-colors duration-200 cursor-pointer">
                             <Upload className="w-8 h-8 text-slate-500 mx-auto mb-2" />
                             <p className="text-slate-400 text-sm">
                                 点击上传附件(可选)
@@ -293,7 +303,7 @@ export function Support() {
                             <p className="text-slate-600 text-xs mt-1">
                                 支持图片、日志文件等,最大 10MB
                             </p>
-                        </div>
+                        </div> */}
 
                         <Button type="submit" className="w-full" loading={isSubmitting}>
                             <Mail className="w-5 h-5 mr-2" />
@@ -321,7 +331,7 @@ export function Support() {
                             <div className="relative">
                                 <input
                                     type="text"
-                                    value="https://support.voiceagent.ai"
+                                    value="https://support.灵犀.ai"
                                     readOnly
                                     className="w-full px-4 py-3 bg-slate-900/50 border border-slate-700 rounded-lg text-white"
                                 />
@@ -355,8 +365,8 @@ export function Support() {
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
                                 <div>
                                     <p className="text-slate-400 mb-1">电子邮件</p>
-                                    <a href="mailto:support@voiceagent.ai" className="text-purple-400 hover:text-purple-300">
-                                        support@voiceagent.ai
+                                    <a href="mailto:support@灵犀.ai" className="text-purple-400 hover:text-purple-300">
+                                        support@灵犀.ai
                                     </a>
                                 </div>
                                 <div>

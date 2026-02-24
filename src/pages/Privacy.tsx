@@ -18,7 +18,7 @@ export function Privacy() {
                     {/* Introduction */}
                     <section>
                         <p className="text-slate-300 leading-relaxed">
-                            感谢您使用 VoiceAgent（以下简称"本应用"或"我们"）。我们非常重视您的隐私，并致力于保护您的个人信息。本隐私政策将帮助您了解我们如何收集、使用、存储和保护您的信息。
+                            感谢您使用 灵犀（以下简称"本应用"或"我们"）。我们非常重视您的隐私，并致力于保护您的个人信息。本隐私政策将帮助您了解我们如何收集、使用、存储和保护您的信息。
                         </p>
                     </section>
 
@@ -171,7 +171,7 @@ export function Privacy() {
                                 如果您对本隐私政策有任何问题、疑虑或建议，请通过以下方式联系我们：
                             </p>
                             <div className="bg-slate-800/50 rounded-lg p-4 space-y-2">
-                                <p>电子邮件：<a href="mailto:privacy@voiceagent.example.com" className="text-purple-400 hover:text-purple-300 transition-colors">privacy@larksings.com</a></p>
+                                <p>电子邮件：<a href="mailto:privacy@灵犀.example.com" className="text-purple-400 hover:text-purple-300 transition-colors">privacy@larksings.com</a></p>
                                 <p className="text-sm text-slate-400">我们将在收到您的请求后尽快回复。</p>
                             </div>
                         </div>
